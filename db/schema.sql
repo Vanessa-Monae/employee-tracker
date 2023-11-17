@@ -17,3 +17,17 @@ CREATE TABLE role (
     REFERENCES department(id)
     ON DELETE CASCADE
 );
+
+CREATE TABLE employee (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    role_id INT,
+    first_name VARCHAR (30),
+    last_name VARCHAR (30),
+    FOREIGN KEY (role_id)
+    REFERENCES role(id)
+    ON DELETE CASCADE, 
+    manager_id INT,
+     FOREIGN KEY (manager_id)
+    REFERENCES employee(id)
+    ON DELETE SET NULL 
+);
